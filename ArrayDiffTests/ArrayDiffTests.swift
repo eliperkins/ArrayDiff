@@ -44,4 +44,13 @@ class ArrayDiffTests: XCTestCase {
             Edit(action: .Substitute, value: Character("r"), destination: 4)
         ])
     }
+
+    func testPerformance() {
+        let origin = Array("Sunday".characters)
+        let destination = Array("Saturday".characters)
+
+        measureBlock {
+            ArrayDiffCalculator.calculateDiff(origin: origin, destination: destination)
+        }
+    }
 }
