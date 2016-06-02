@@ -53,4 +53,21 @@ class ArrayDiffTests: XCTestCase {
             ArrayDiffCalculator.calculateDiff(origin: origin, destination: destination)
         }
     }
+
+    func testLongStringPerformance() {
+        let originString = "Food truck actually man braid, letterpress XOXO quinoa sartorial. " +
+            "Narwhal before they sold out mixtape next level, freegan yuccie stumptown pour-over " +
+            "try-hard lomo keffiyeh waistcoat sriracha selvage. Truffaut cray venmo ethical deep " +
+            "v freegan. Hashtag offal normcore schlitz cold-pressed, food truck"
+        let destinationString = "Bicycle rights paleo godard, tofu man braid green juice umami " +
+            "keffiyeh tattooed brunch hella. Williamsburg chartreuse butcher vinyl. Freegan " +
+            "thundercats quinoa roof party tote bag, actually schlitz +1 brooklyn yuccie vinyl. " +
+            "Listicle mumblecore occupy banh mi asymmetrical polaroid. Four loko viral pug"
+        let origin = Array(originString.characters)
+        let destination = Array(destinationString.characters)
+
+        measureBlock {
+            ArrayDiffCalculator.calculateDiff(origin: origin, destination: destination)
+        }
+    }
 }
